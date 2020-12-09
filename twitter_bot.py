@@ -22,25 +22,25 @@ class FavRetweetListener(tweepy.StreamListener):
                 print("Error on fav",e)
 
 
-                followers = []
-                print("after followers dic")
-                for page in tweepy.Cursor(self.api.friends, screen_name='@ZawadHossain12', wait_on_rate_limit=True,count=10).pages():
-                    try:
-                        followers.extend(page)
-                    except tweepy.TweepError as e:
-                        print("Going to sleep:", e)
-                print("after loop1")
-                for user in followers:
-                    try:
-                        print(user.name)
-                        tweet = api.user_timeline(id = user.id, count = 1)[0]
-                        #api.create_favorite(tweet.id)
-                        if not tweet.favorited:
-                            tweet.favorite()
-                            print('----Liking Tweet-----',tweet.text)
-                            print(tweet.favorited)
-                    except:
-                        print("error in liking following tweet")
+                # followers = []
+                # print("after followers dic")
+                # for page in tweepy.Cursor(self.api.friends, screen_name='@ZawadHossain12', wait_on_rate_limit=True,count=10).pages():
+                #     try:
+                #         followers.extend(page)
+                #     except tweepy.TweepError as e:
+                #         print("Going to sleep:", e)
+                # print("after loop1")
+                # for user in followers:
+                #     try:
+                #         print(user.name)
+                #         tweet = api.user_timeline(id = user.id, count = 1)[0]
+                #         #api.create_favorite(tweet.id)
+                #         if not tweet.favorited:
+                #             tweet.favorite()
+                #             print('----Liking Tweet-----',tweet.text)
+                #             print(tweet.favorited)
+                #     except:
+                #         print("error in liking following tweet")
         # if not tweet.retweeted:
         #     # Retweet, since we have not retweeted it yet
         #     try:
