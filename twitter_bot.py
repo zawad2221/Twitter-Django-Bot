@@ -24,7 +24,7 @@ class FavRetweetListener(tweepy.StreamListener):
 
                 followers = []
                 print("after followers dic")
-                for page in tweepy.Cursor(api.friends, screen_name='@ZawadHossain12', wait_on_rate_limit=True,count=10).pages():
+                for page in tweepy.Cursor(self.api.friends, screen_name='@ZawadHossain12', wait_on_rate_limit=True,count=10).pages():
                     try:
                         followers.extend(page)
                     except tweepy.TweepError as e:
