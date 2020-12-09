@@ -20,6 +20,27 @@ class FavRetweetListener(tweepy.StreamListener):
                 print("liked tweet: ",tweet.text)
             except Exception as e:
                 print("Error on fav",e)
+
+
+                followers = []
+                print("after followers dic")
+                for page in tweepy.Cursor(api.friends, screen_name='@ZawadHossain12', wait_on_rate_limit=True,count=10).pages():
+                    try:
+                        followers.extend(page)
+                    except tweepy.TweepError as e:
+                        print("Going to sleep:", e)
+                print("after loop1")
+                for user in followers:
+                    try:
+                        print(user.name)
+                        tweet = api.user_timeline(id = user.id, count = 1)[0]
+                        #api.create_favorite(tweet.id)
+                        if not tweet.favorited:
+                            tweet.favorite()
+                            print('----Liking Tweet-----',tweet.text)
+                            print(tweet.favorited)
+                    except:
+                        print("error in liking following tweet")
         # if not tweet.retweeted:
         #     # Retweet, since we have not retweeted it yet
         #     try:
@@ -46,7 +67,7 @@ def main(keywords):
 
     ACCESS_KEY = environ['ACCESS_KEY']
     ACCESS_SECRET = environ['ACCESS_SECRET']
-    #dd
+    
 
     auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
     auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
@@ -61,5 +82,8 @@ def main(keywords):
     tweets_listener = FavRetweetListener(api)
     stream = tweepy.Stream(api.auth, tweets_listener)
     stream.filter(track=keywords, languages=["en"])
+ 
+          
+
 
 main(hashtag)
