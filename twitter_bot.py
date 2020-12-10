@@ -59,7 +59,7 @@ hashtag = ["#Django", "#django", "#DjantweetgoDev", "#djangodev",
  "#androidstudio","#java","#Java",
  "#javaprogramming","#JavaProgramming","#JavaDevelopment",
  "#javadevelopment","#kotlin","#Kotlin","#kotlindev","#KotlinDev",
- "#kotlindevelopment","#AndroidDev"]
+ "#kotlindevelopment","#AndroidDev","100DaysOfCode","100daysofcode","100daysofcodechallenge"]
 
 def main(keywords):
     CONSUMER_KEY = environ['CONSUMER_KEY']
