@@ -1,1 +1,1 @@
-worker: python twitter_bot.py
+worker: like_friends_tweet.py
