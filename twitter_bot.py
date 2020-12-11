@@ -97,7 +97,7 @@ def main(keywords):
             try:
                 print("---------------------------------")
                 print("user name:",user.name)
-                tweets = api.user_timeline(id=user.id, count= 30)
+                tweets = api.user_timeline(id=user.id)
                 #number of tweet i want to like
                 limit = 4
                 count = 0
