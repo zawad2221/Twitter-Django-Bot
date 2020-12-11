@@ -3,16 +3,15 @@ import json
 from os import environ
 
 def main():
-    # CONSUMER_KEY = environ['CONSUMER_KEY']
-    # CONSUMER_SECRET = environ['CONSUMER_SECRET']
+    CONSUMER_KEY = environ['CONSUMER_KEY']
+    CONSUMER_SECRET = environ['CONSUMER_SECRET']
 
-    # ACCESS_KEY = environ['ACCESS_KEY']
-    # ACCESS_SECRET = environ['ACCESS_SECRET']
+    ACCESS_KEY = environ['ACCESS_KEY']
+    ACCESS_SECRET = environ['ACCESS_SECRET']
 
-    # auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
-    # auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
-    auth = tweepy.OAuthHandler("ohzLCn0emBTqTBVYxHyz36GNT","L6RNDzx1QHdKr2aOibRTjVRSkMY2KrFov2Gd4za1LApwPC52cO")
-    auth.set_access_token("1301556273993793536-6EsHUDQrpepboAiD5W2frrhtWnFKGg","lKxZJPUlgG3GOSnQOo99COd0HBIfQufY1XapNGg2v4VVd")
+    auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
+    auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
+ 
     
     
     api = tweepy.API(auth)
