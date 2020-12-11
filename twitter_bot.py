@@ -2,25 +2,25 @@ import tweepy
 import json
 from os import environ
 
+
 class FavRetweetListener(tweepy.StreamListener):
     def __init__(self, api):
         self.api = api
         self.me = api.me()
 
     def on_status(self, tweet):
-       
+
         if tweet.in_reply_to_status_id is not None or \
-            tweet.user.id == self.me.id:
+                tweet.user.id == self.me.id:
             # This tweet is a reply or I'm its author so, ignore it
             return
         if not tweet.favorited:
             # Mark it as Liked, since we have not done it yet
             try:
                 tweet.favorite()
-                print("liked tweet: ",tweet.text)
+                print("liked tweet: ", tweet.text)
             except Exception as e:
-                print("Error on fav",e)
-
+                print("Error on fav", e)
 
                 # followers = []
                 # print("after followers dic")
@@ -51,15 +51,17 @@ class FavRetweetListener(tweepy.StreamListener):
     def on_error(self, status):
         print(status)
 
+
 hashtag = ["#Django", "#django", "#DjantweetgoDev", "#djangodev",
- "#python", "#djangounchained", "#pythonprogramming",
-  "#DjangoDevelopment", "#PythonProgramming",
- "#djangodevelopment","#DjangoDevelopment","#DjangoDev",
- "#androiddevelopment","#androiddev","#AndroidDev","#AndroidDevelopment",
- "#androidstudio","#java","#Java",
- "#javaprogramming","#JavaProgramming","#JavaDevelopment",
- "#javadevelopment","#kotlin","#Kotlin","#kotlindev","#KotlinDev",
- "#kotlindevelopment","#AndroidDev","100DaysOfCode","100daysofcode","100daysofcodechallenge"]
+           "#python", "#djangounchained", "#pythonprogramming",
+           "#DjangoDevelopment", "#PythonProgramming",
+           "#djangodevelopment", "#DjangoDevelopment", "#DjangoDev",
+           "#androiddevelopment", "#androiddev", "#AndroidDev", "#AndroidDevelopment",
+           "#androidstudio", "#java", "#Java",
+           "#javaprogramming", "#JavaProgramming", "#JavaDevelopment",
+           "#javadevelopment", "#kotlin", "#Kotlin", "#kotlindev", "#KotlinDev",
+           "#kotlindevelopment", "#AndroidDev", "100DaysOfCode", "100daysofcode", "100daysofcodechallenge"]
+
 
 def main(keywords):
     CONSUMER_KEY = environ['CONSUMER_KEY']
@@ -67,10 +69,10 @@ def main(keywords):
 
     ACCESS_KEY = environ['ACCESS_KEY']
     ACCESS_SECRET = environ['ACCESS_SECRET']
-    
 
     auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
     auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
+    
     api = tweepy.API(auth)
     try:
         api.verify_credentials()
@@ -79,11 +81,40 @@ def main(keywords):
         print("error during authentication")
         return
 
-    tweets_listener = FavRetweetListener(api)
-    stream = tweepy.Stream(api.auth, tweets_listener)
-    stream.filter(track=keywords, languages=["en"])
- 
-          
+    # tweets_listener = FavRetweetListener(api)
+    # stream = tweepy.Stream(api.auth, tweets_listener)
+    # stream.filter(track=keywords, languages=["en"])
 
+    followers = []
+    print("after followers dic")
+    for page in tweepy.Cursor(api.friends, screen_name='@ZawadHossain12', wait_on_rate_limit=True).pages():
+        try:
+            followers.extend(page)
+        except tweepy.TweepError as e:
+            print("Going to sleep:", e)
+        print("after loop1")
+        for user in followers:
+            try:
+                print("---------------------------------")
+                print("user name:",user.name)
+                tweets = api.user_timeline(id=user.id, count= 30)
+                #number of tweet i want to like
+                limit = 4
+                count = 0
+                for tweet in tweets:
+                    # api.create_favorite(tweet.id)
+                    if not tweet.favorited:
+                        try:
+                            tweet.favorite()
+                            print('----Liking Tweet-----', tweet.text)
+                            print(tweet.favorited)
+                            count +=1
+                        except Exception as e:
+                            print("erron in liking tweet, error: ",e)
+                    if count >=limit:
+                        break
+            except Exception as e:
+                print("error in getting tweet, error: ",e)
 
-main(hashtag)
+while(True):
+    main(hashtag)
