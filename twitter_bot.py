@@ -1,6 +1,7 @@
 import tweepy
 import json
 from os import environ
+import time 
 
 class FavRetweetListener(tweepy.StreamListener):
     def __init__(self, api):
@@ -20,6 +21,7 @@ class FavRetweetListener(tweepy.StreamListener):
                 print("liked tweet: ",tweet.text)
             except Exception as e:
                 print("Error on fav",e)
+                time.sleep(9)
 
 
                 # followers = []
