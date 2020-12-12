@@ -41,6 +41,8 @@ def main():
                 count = 0
                 for tweet in tweets:
                     # api.create_favorite(tweet.id)
+                    if tweet.in_reply_to_status_id is not None:
+                        continue 
                     if not tweet.favorited:
                         try:
                             tweet.favorite()
