@@ -52,7 +52,7 @@ def main():
                             count +=1
                         except Exception as e:
                             print("erron in liking tweet, error: ",e)
-                            time.sleep(5)
+                            time.sleep(9)
                     if count >=limit:
                         break
             except Exception as e:
