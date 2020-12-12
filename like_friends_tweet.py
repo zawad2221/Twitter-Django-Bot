@@ -1,5 +1,6 @@
 import tweepy
 import json
+import time
 from os import environ
 
 def main():
@@ -51,7 +52,7 @@ def main():
                             count +=1
                         except Exception as e:
                             print("erron in liking tweet, error: ",e)
-                            sleep(900)
+                            time.sleep(900)
                     if count >=limit:
                         break
             except Exception as e:
