@@ -18,7 +18,7 @@ class FavRetweetListener(tweepy.StreamListener):
             # Mark it as Liked, since we have not done it yet
             try:
                 tweet.favorite()
-                print("liked tweet: ",tweet.text)
+                print("liked tweet: ")
             except Exception as e:
                 print("Error on fav",e)
                 time.sleep(9)
