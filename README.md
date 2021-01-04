@@ -1,2 +1,2 @@
 # Twitter-Django-Bot
-Twitter Bot who like and retweet #django #python. 
+## Twitter Bot developed using python tweepy library who like and retweet #django #python and #100DaysOfCode. 
