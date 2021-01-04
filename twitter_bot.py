@@ -30,7 +30,9 @@ class FavRetweetListener(tweepy.StreamListener):
                  tweet.retweet()
                  your_status = "follow me to get #python update"
                  reply_status = "@%s %s" % (tweet.user.screen_name, your_status)
-                 self.api.update_status(status=reply_status, in_reply_to_status_id=tweet.id)
+                 status=reply_status
+                 in_reply_to_status_id=tweet.id
+                 self.api.update_status(status, in_reply_to_status_id)
                  #self.api.update_status(reply_status,tweet.id)
                  print("retweeted: ") 
              except Exception as e:
