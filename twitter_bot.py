@@ -32,7 +32,7 @@ class FavRetweetListener(tweepy.StreamListener):
                  reply_status = "@%s %s" % (tweet.user.screen_name, your_status)
                  status=reply_status
                  in_reply_to_status_id=str(tweet.id)
-                 self.api.update_status(status, in_reply_to_status_id)
+                 self.api.update_status(status, in_reply_to_status_id,auto_populate_reply_metadata=True)
                  #self.api.update_status(reply_status,tweet.id)
                  print("retweeted: ") 
              except Exception as e:
