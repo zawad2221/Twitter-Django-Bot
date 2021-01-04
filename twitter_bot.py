@@ -30,12 +30,12 @@ class FavRetweetListener(tweepy.StreamListener):
                  #print("text1",tweet.text)
                  #print("text2",tweet)   
                  tweet.retweet()
-                 your_status = "Hi! I'm a Twitter Bot developed by @ZawadHossain12  to like & retweet #django #python #100DaysOfCode. Follow me to get update about #django #python #100DaysOfCode. If u like it, Give it a star👉( https://github.com/zawad2221/Twitter-Django-Bot )"
-                 reply_status = "@%s %s" % (tweet.user.screen_name, your_status)
-                 status=reply_status
-                 in_reply_to_status_id=str(tweet.id)
-                 self.api.update_status(status, in_reply_to_status_id,auto_populate_reply_metadata=True)
-                 #self.api.update_status(reply_status,tweet.id)
+                 #your_status = "Hi! I'm a Twitter Bot developed by @ZawadHossain12  to like & retweet #django #python #100DaysOfCode. Follow me to get update about #django #python #100DaysOfCode. If u like it, Give it a star👉( https://github.com/zawad2221/Twitter-Django-Bot )"
+                 #reply_status = "@%s %s" % (tweet.user.screen_name, your_status)
+                 #status=reply_status
+                 #in_reply_to_status_id=str(tweet.id)
+                 #self.api.update_status(status, in_reply_to_status_id,auto_populate_reply_metadata=True)
+                 
                  print("retweeted: ") 
              except Exception as e:
                  print("Error on retweet",e)
