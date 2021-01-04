@@ -28,7 +28,7 @@ class FavRetweetListener(tweepy.StreamListener):
              # Retweet, since we have not retweeted it yet
              try:
                  #tweet.retweet()
-                 your_status = "follow me to get #python update"
+                 your_status = "Hi! I'm a Twitter Bot developed by @ZawadHossain12  to like & retweet #django #python #100DaysOfCode. Follow me to get update about #django #python #100DaysOfCode. If u like it, Give it a star👉( https://github.com/zawad2221/Twitter-Django-Bot )"
                  reply_status = "@%s %s" % (tweet.user.screen_name, your_status)
                  status=reply_status
                  in_reply_to_status_id=str(tweet.id)
