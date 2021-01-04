@@ -27,7 +27,7 @@ class FavRetweetListener(tweepy.StreamListener):
         if not tweet.retweeted:
              # Retweet, since we have not retweeted it yet
              try:
-                 tweet.retweet()
+                 #tweet.retweet()
                  your_status = "follow me to get #python update"
                  reply_status = "@%s %s" % (tweet.user.screen_name, your_status)
                  status=reply_status
