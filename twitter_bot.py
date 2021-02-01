@@ -14,13 +14,13 @@ class FavRetweetListener(tweepy.StreamListener):
             tweet.user.id == self.me.id:
             # This tweet is a reply or I'm its author so, ignore it
             return
-        if tweet.favorited == False:
+        #if tweet.favorited == False:
             # Mark it as Liked, since we have not done it yet
-            try:
-                tweet.favorite()
-                print("liked tweet: ")
-            except Exception as e:
-                print("Error on fav",e)
+            #try:
+                #tweet.favorite()
+                #print("liked tweet: ")
+            #except Exception as e:
+                #print("Error on fav",e)
                 #time.sleep(9)
 
 
