@@ -39,10 +39,11 @@ class FavRetweetListener(tweepy.StreamListener):
                  print("retweeted: ") 
              except Exception as e:
                  print("Error on retweet",e)
-             time.sleep(11)
+                 time.sleep(11)
 
     def on_error(self, status):
         print("on_error",status)
+        time.sleep(11)
 
 hashtag = ["#Django", "#django", "#DjantweetgoDev", "#djangodev",
  "#python", "#djangounchained", "#pythonprogramming",
