@@ -19,9 +19,10 @@ class FavRetweetListener(tweepy.StreamListener):
             try:
                 tweet.favorite()
                 print("liked tweet: ")
+                time.sleep(30)
             except Exception as e:
                 print("Error on fav",e)
-                time.sleep(9)
+                time.sleep(20)
 
 
                 # followers = []
